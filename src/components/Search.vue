@@ -1,23 +1,23 @@
 <template>
-  <form>
+  <form @submit.prevent="handleSubmit">
     <h2>Select your weather thresholds and find out if you can go outside</h2>
     
     <label>Min Temperature:</label>
-    <select v-model="minTemp">
+    <select v-model.number="minTemp">
       <option value="40">40</option>
       <option value="50">50</option>
       <option value="60">60</option>
     </select>
     
     <label>Max Temperature:</label>
-    <select v-model="maxTemp">
+    <select v-model.number="maxTemp">
       <option value="80">80</option>
       <option value="90">90</option>
       <option value="100">100</option>
     </select>
 
     <label>Wind Speed:</label>
-    <select v-model="wind">
+    <select v-model.number="wind">
       <option value="5">5</option>
       <option value="10">10</option>
       <option value="20">20</option>
@@ -25,15 +25,13 @@
     </select>
 
     <label>Probability of Precipitation:</label>
-    <select v-model="precipitation">
+    <select v-model.number="precipitation">
       <option value="30">30</option>
       <option value="50">50</option>
       <option value="70">70</option>
     </select>
 
-    <!-- <Link to='/results' onClick={() => onSubmitSearch()}>
-      Submit
-    </Link> -->
+    <button>Submit</button>
   </form>
 </template>
 
@@ -51,6 +49,12 @@ export default defineComponent({
       precipitation: 50
     }
   },
+  methods: {
+    handleSubmit() {
+      console.log(this.minTemp, this.maxTemp, this.wind, this.precipitation)
+
+    }
+  }
 })
 </script>
 
