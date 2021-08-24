@@ -4,7 +4,10 @@
       <h1>Can I look at a tree?</h1>
     </router-link>
   </header>
-  <main>
+  <main v-if="errorCode">
+    <Error />
+  </main>
+  <main v-else>
     <router-view/>
   </main>
 </template>
@@ -14,9 +17,13 @@ import { defineComponent } from 'vue';
 import { fetchData } from './composables/fetchCalls'
 import { cleanData } from './composables/cleanData'
 import { CleanedHour } from './interfaces/index'
+import Error from './components/Error.vue'
 
 export default defineComponent({
   name: 'App',
+  components: {
+    Error
+  },
   data() {
     return {
       errorCode: 0,
