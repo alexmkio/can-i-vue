@@ -27,11 +27,6 @@ const routes: Array<RouteRecordRaw> = [
     component: Calendar
   },
   {
-    path: '/error',
-    name: 'Error',
-    component: Error
-  },
-  {
     path: '/:catchAll(.*)',
     name: 'Error',
     component: Error
