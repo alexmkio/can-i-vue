@@ -1,33 +1,72 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Search</router-link> |
-    <router-link to="/results">Results</router-link> |
-    <router-link to="/good_weather">Good Weather</router-link> |
-    <router-link to="/calendar">Calendar</router-link> |
-    <router-link to="/error">Error</router-link>
-  </div>
-  <router-view/>
+  <header>
+    <router-link to='/'>
+      <h1>Can I look at a tree?</h1>
+    </router-link>
+  </header>
+  <main>
+    <router-view/>
+  </main>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
   text-align: center;
-  color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
+html {
+  min-height: 100vh;
+  background: url('./assets/nice.jpeg') no-repeat center center fixed;
+  background-size: cover;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+body {
+  display: flex;
+  flex-direction: column;
+  font-size: larger;
+  color: white;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+a:link {
+  color: white;
+}
+
+a:visited {
+  color: white;
+}
+
+a:hover {
+  color: yellow;
+}
+
+a:active {
+  color: red;
+}
+
+h1, h2 {
+  text-transform: capitalize;
+  padding: 1vh;
+  line-height: 1.2;
+}
+
+header {
+  position: sticky;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+main {
+  margin-top: 8vh;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 1vw;
 }
 </style>
