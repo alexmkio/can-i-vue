@@ -52,7 +52,7 @@ export default defineComponent({
   methods: {
     handleSubmit() {
       console.log(this.minTemp, this.maxTemp, this.wind, this.precipitation)
-
+      this.$router.push('/results')
     }
   }
 })
