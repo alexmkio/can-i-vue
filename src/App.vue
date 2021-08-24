@@ -9,6 +9,46 @@
   </main>
 </template>
 
+<script lang="ts">
+import { defineComponent } from 'vue';
+import { fetchData } from './composables/fetchCalls'
+import { cleanData } from './composables/cleanData'
+import { CleanedHour } from './interfaces/index'
+
+export default defineComponent({
+  name: 'App',
+  data() {
+    return {
+      errorCode: 0,
+      coordinates: null,
+      forecast: [] as CleanedHour[],
+      suitableHours: [],
+      notice: null,
+      schedule: []
+    }
+  },
+  async mounted() {
+    let ipKey = `103a0ac5b110412c9a639e3ab5afd99f`
+    let ipParams = `&fields=latitude,longitude,time_zone`
+    let weatherURL = `https://api.weather.gov/points/`
+    try {
+      let coordinates = await fetchData(
+        `https://api.ipgeolocation.io/ipgeo?apiKey=${ipKey}${ipParams}`
+      )
+      let gridPoints = await fetchData(
+        `${weatherURL}${coordinates.latitude},${coordinates.longitude}`
+      )
+      let forecast = await fetchData(gridPoints.properties.forecastGridData)
+      let cleanedData = cleanData(forecast)
+      this.coordinates = coordinates
+      this.forecast = cleanedData
+    } catch (error) {
+      this.errorCode = Number(error.message)
+    }
+  }
+})
+</script>
+
 <style>
 * {
   margin: 0;
