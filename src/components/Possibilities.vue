@@ -1,19 +1,19 @@
 <template>
   <section className='poss'>
-      <section className='possBlurb'>
-        <h2>Suitable hours to be outside</h2>
-        <p>Click on an hour to add or delete it from your calendar</p>
-        <router-link to='/calendar'>Your calendar</router-link>
-      </section>
-      <section className='cards'>
-        <article v-for="hour in suitableHours"
-          :key="hour.month + hour.day + hour.hour"
-          className='card'
-        >
-          <hour-card :hour="hour" @parentlistener="parentListener" />
-        </article>
-      </section>
+    <section className='possBlurb'>
+      <h2>Suitable hours to be outside</h2>
+      <p>Click on an hour to add or delete it from your calendar</p>
+      <router-link to='/calendar'>Your calendar</router-link>
     </section>
+    <section className='cards'>
+      <article v-for="hour in suitableHours"
+        :key="hour.month + hour.day + hour.hour"
+        className='card'
+      >
+        <hour-card :hour="hour" @parentlistener="parentListener" />
+      </article>
+    </section>
+  </section>
 </template>
 
 <script lang="ts">
