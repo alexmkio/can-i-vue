@@ -40,7 +40,7 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'Search',
-  components: {},
+  emits: ["getforecast"],
   data() {
     return {
       minTemp: 50,
@@ -61,7 +61,7 @@ export default defineComponent({
         probOfPrecip: this.precipitation
       }
 
-      this.$emit('getForecast', thresholds)
+      this.$emit('getforecast', thresholds)
       this.$router.push('/results')
     }
   }

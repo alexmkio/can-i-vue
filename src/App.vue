@@ -9,8 +9,8 @@
   </main>
   <main v-else>
     <router-view
-      @getForecast="getForecast"
-      @addToCalendar="addToCalendar"
+      @getforecast="getForecast"
+      @grandparentlistener="addToCalendar"
       :notice="notice"
       :suitableHours="suitableHours"
     />
@@ -72,7 +72,7 @@ export default defineComponent({
         this.suitableHours = suitableHours
       }
     },
-    addToCalendar(argument: String) {
+    addToCalendar(argument: CleanedHour) {
       console.log('ADDING', argument)
     }
   }

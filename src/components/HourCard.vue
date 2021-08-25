@@ -1,8 +1,6 @@
 <template>
   <label>
-    <button className="material-icons-outlined md-24 icon"
-      @click="handleClick"
-    >
+    <button className="material-icons-outlined md-24 icon" @click="handleClick">
       {{ hour.inCalendar ? 'remove' : 'add' }}
     </button>
   </label>
@@ -31,7 +29,7 @@ import { calendar } from '../composables/time'
 
 export default defineComponent({
   name: 'HourCard',
-  components: {},
+  emits: ["parentlistener"],
   props: {
     hour: Object
   },
@@ -42,8 +40,7 @@ export default defineComponent({
   },
   methods: {
     handleClick() {
-      console.log('heyyyyyyy')
-      this.$emit('addToCalendar', 'argu')
+      this.$emit('parentlistener', this.hour)
     }
   }
 })

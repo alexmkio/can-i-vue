@@ -10,7 +10,7 @@
           :key="hour.month + hour.day + hour.hour"
           className='card'
         >
-          <hour-card :hour="hour" @addToCalendar="addToCalendar" />
+          <hour-card :hour="hour" @parentlistener="parentListener" />
         </article>
       </section>
     </section>
@@ -19,14 +19,21 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import HourCard from './HourCard.vue';
+import { CleanedHour } from '../interfaces/index'
 
 export default defineComponent({
   name: 'Possibilities',
   components: { HourCard },
+  emits: ["grandparentlistener"],
   props: {
     suitableHours: Array
+  },
+  methods: {
+    parentListener(hourObject: CleanedHour) {
+      this.$emit('grandparentlistener', hourObject)
+    }
   }
-});
+})
 </script>
 
 <style>
