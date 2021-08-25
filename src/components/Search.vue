@@ -51,7 +51,17 @@ export default defineComponent({
   },
   methods: {
     handleSubmit() {
-      console.log(this.minTemp, this.maxTemp, this.wind, this.precipitation)
+
+      let thresholds = {
+        temperature: {
+          low: this.minTemp,
+          high: this.maxTemp
+        },
+        windSpeed: this.wind,
+        probOfPrecip: this.precipitation
+      }
+
+      this.$emit('getForecast', thresholds)
       this.$router.push('/results')
     }
   }

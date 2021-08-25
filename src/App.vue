@@ -8,7 +8,7 @@
     <Error />
   </main>
   <main v-else>
-    <router-view/>
+    <router-view @getForecast="getForecast" />
   </main>
 </template>
 
@@ -16,7 +16,7 @@
 import { defineComponent } from 'vue';
 import { fetchData } from './composables/fetchCalls'
 import { cleanData } from './composables/cleanData'
-import { CleanedHour } from './interfaces/index'
+import { CleanedHour, Thresholds } from './interfaces/index'
 import Error from './components/Error.vue'
 
 export default defineComponent({
@@ -51,6 +51,10 @@ export default defineComponent({
       this.forecast = cleanedData
     } catch (error) {
       this.errorCode = Number(error.message)
+    }
+  },
+  methods: {
+    getForecast(thresholds: Thresholds) {
     }
   }
 })
