@@ -8,7 +8,7 @@
     <Error />
   </main>
   <main v-else>
-    <router-view @getForecast="getForecast" />
+    <router-view @getForecast="getForecast" :notice="notice" />
   </main>
 </template>
 

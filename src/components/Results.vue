@@ -1,12 +1,12 @@
 <template>
   <section className='results'>
-    <section v-if="nice">
+    <section v-if="notice.nice">
       <h2>Good news!</h2>
-      <p>You can go outside for {{ hours }} hours!</p>
+      <p>You can go outside for {{ notice.hours }} hours!</p>
     </section>
     <section v-else>
       <h2>Bad news</h2>
-      <p>You can't go outside for {{ hours }} hours!</p>
+      <p>You can't go outside for {{ notice.hours }} hours!</p>
     </section>
     <router-link to='/good_weather'>
       See all the future good weather
@@ -20,12 +20,9 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'Results',
   components: {},
-  data() {
-    return {
-      hours: 666,
-      nice: true
-    }
-  },
+  props: {
+    notice: Object
+  }
 })
 </script>
 
