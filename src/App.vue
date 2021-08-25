@@ -8,7 +8,12 @@
     <Error />
   </main>
   <main v-else>
-    <router-view @getForecast="getForecast" :notice="notice" />
+    <router-view
+      @getforecast="getForecast"
+      @grandparentlistener="addToCalendar"
+      :notice="notice"
+      :suitableHours="suitableHours"
+    />
   </main>
 </template>
 
@@ -66,6 +71,9 @@ export default defineComponent({
         this.notice = notice
         this.suitableHours = suitableHours
       }
+    },
+    addToCalendar(argument: CleanedHour) {
+      console.log('ADDING', argument)
     }
   }
 })
