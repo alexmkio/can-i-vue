@@ -13,6 +13,7 @@
       @grandparentlistener="addToCalendar"
       :notice="notice"
       :suitableHours="suitableHours"
+      :schedule="schedule"
     />
   </main>
 </template>
