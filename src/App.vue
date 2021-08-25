@@ -37,7 +37,7 @@ export default defineComponent({
       forecast: [] as CleanedHour[],
       suitableHours: [] as CleanedHour[],
       notice: null as Notice | null,
-      schedule: []
+      schedule: [] as CleanedHour[]
     }
   },
   async mounted() {
@@ -72,8 +72,20 @@ export default defineComponent({
         this.suitableHours = suitableHours
       }
     },
-    addToCalendar(argument: CleanedHour) {
-      console.log('ADDING', argument)
+    addToCalendar(hourObject: CleanedHour) {
+      let suitable = this.suitableHours
+      let thatOne = suitable.indexOf(hourObject)
+      if (this.schedule.includes(hourObject)) {
+        let currentSchedule = this.schedule
+        let ind = currentSchedule.indexOf(hourObject)
+        currentSchedule.splice(ind, 1)
+        suitable[thatOne].inCalendar = false
+        this.schedule = [...currentSchedule]
+      } else {
+        suitable[thatOne].inCalendar = true
+        this.schedule = [...this.schedule, hourObject]
+      }
+      this.suitableHours = [...suitable]
     }
   }
 })
