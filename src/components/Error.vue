@@ -24,7 +24,7 @@ export default defineComponent({
   emits: ["clearerror"],
   data() {
     return {
-      matchingResponse: undefined as HttpResponse | undefined
+      matchingResponse: {} as HttpResponse | undefined
     }
   },
   mounted() {

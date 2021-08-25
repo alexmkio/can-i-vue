@@ -7,10 +7,10 @@
 
   <dl>
     <dt>Date:</dt>
-    <dd>{{ calendar.months.find(month => month.number === hour.month)?.name }} {{ hour.day }}</dd>
+    <dd>{{ months.find(month => month.number === hour.month)?.name }} {{ hour.day }}</dd>
 
     <dt>Hour:</dt>
-    <dd>{{ calendar.hours.find(thisHour => thisHour.number === hour.hour)?.name }}</dd>
+    <dd>{{ hours.find(thisHour => thisHour.number === hour.hour)?.name }}</dd>
 
     <dt>Temperature:</dt>
     <dd>{{ hour.temperature }} <span>&#8457;</span></dd>
@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { calendar } from '../composables/time'
+import { months, hours } from '../composables/time'
 
 export default defineComponent({
   name: 'HourCard',
@@ -35,7 +35,8 @@ export default defineComponent({
   },
   data() {
     return {
-      calendar
+      months,
+      hours
     }
   },
   methods: {
