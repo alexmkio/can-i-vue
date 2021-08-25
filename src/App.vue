@@ -16,7 +16,8 @@
 import { defineComponent } from 'vue';
 import { fetchData } from './composables/fetchCalls'
 import { cleanData } from './composables/cleanData'
-import { CleanedHour, Thresholds } from './interfaces/index'
+import { determineSuitableHours, craftNotice } from './composables/utils'
+import { CleanedHour, Thresholds, IpFetch, Notice } from './interfaces/index'
 import Error from './components/Error.vue'
 
 export default defineComponent({
@@ -27,10 +28,10 @@ export default defineComponent({
   data() {
     return {
       errorCode: 0,
-      coordinates: null,
+      coordinates: null as IpFetch | null,
       forecast: [] as CleanedHour[],
-      suitableHours: [],
-      notice: null,
+      suitableHours: [] as CleanedHour[],
+      notice: null as Notice | null,
       schedule: []
     }
   },
@@ -55,6 +56,16 @@ export default defineComponent({
   },
   methods: {
     getForecast(thresholds: Thresholds) {
+      if (this.coordinates) {
+        let suitableHours = determineSuitableHours(
+          thresholds,
+          this.forecast,
+          this.coordinates.time_zone.name
+        )
+        let notice = craftNotice(suitableHours, this.coordinates.time_zone.name)
+        this.notice = notice
+        this.suitableHours = suitableHours
+      }
     }
   }
 })
