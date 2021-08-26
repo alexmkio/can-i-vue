@@ -5,7 +5,7 @@
     </router-link>
   </header>
   <main v-if="errorCode">
-    <Error />
+    <Error :errorCode="errorCode" @clearerror="clearError" />
   </main>
   <main v-else>
     <router-view
@@ -87,6 +87,9 @@ export default defineComponent({
         this.schedule = [...this.schedule, hourObject]
       }
       this.suitableHours = [...suitable]
+    },
+    clearError() {
+      this.errorCode = 0
     }
   }
 })

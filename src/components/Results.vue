@@ -19,7 +19,6 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'Results',
-  components: {},
   props: {
     notice: Object
   }

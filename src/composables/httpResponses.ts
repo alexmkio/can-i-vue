@@ -1,4 +1,6 @@
-export const httpResponses = [
+import { HttpResponse } from '../interfaces/index'
+
+export const httpResponses:Array<HttpResponse> = [
   {
     "code": 301,
     "message": "Moved Permanently",

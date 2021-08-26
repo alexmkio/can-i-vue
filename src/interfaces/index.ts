@@ -62,30 +62,8 @@ export interface Time {
   name: string;
 }
 
-export interface CalendarProps {
-  calendar: CleanedHour[];
-  addToCalendar: (hourObject: CleanedHour) => void;
-}
-
-export interface ErrorProps {
-  errorCode: number;
-  clearSelected: () => void;
-}
-
-export interface HourProps {
-  hour: CleanedHour;
-  addToCalendar: (hourObject: CleanedHour) => void;
-}
-
-export interface PossibilitiesProps {
-  suitableHours: CleanedHour[];
-  addToCalendar: (hourObject: CleanedHour) => void;
-}
-
-export interface ResultsProps {
-  notice: Notice;
-}
-
-export interface SearchProps {
-  getForecast: (thresholds: Thresholds) => void;
+export interface HttpResponse {
+  code: number;
+  message: string;
+  description: string;
 }
